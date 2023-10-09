@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer component{
+    .document-button{
+        @apply bg-blue-200 rounded-full 
+    }
+    .url-button{
+        @apply bg-blue-200 rounded-full 
+    }
+    .active-btn{
+        @apply bg-white rounded-full 
+    }
+    .flex-align{
+        @apply flex flex-col items-center justify-center
+    }
+
+    .sign-input{
+        @apply m-2 flex gap-3 items-center justify-between w-[80%] self-center place-self-center
+}
+ 
+.input{
+    @apply p-2 border-[1.5px] border-black rounded outline-none
+}
+
+
+}
+    
