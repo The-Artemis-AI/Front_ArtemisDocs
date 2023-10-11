@@ -1,13 +1,12 @@
 
 import  { useState } from 'react';
-import "../assets/css/conversation-page.css"
 import DocumentControl from "../components/DocumentControl";
-import logo from '../assets/images/favicon.png'
-import send from '../assets/images/img_send.svg'
-import doc from '../assets/docs/doc.pdf'
+import logo from '../assets/imgs/favicon.png'
+import send from '../assets/imgs/img_send.svg'
 
 
-let document = doc
+
+
 
 const ConversationPage = ({ messages }) => {
   const [message, setMessage] = useState('');
@@ -140,6 +139,7 @@ const ConversationPage = ({ messages }) => {
     </div>
 
   </div>
+ 
   
   )
 }

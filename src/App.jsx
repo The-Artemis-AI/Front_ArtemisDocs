@@ -7,6 +7,15 @@ import {
 } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
+
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+
+
+library.add(fas, faTwitter, faFontAwesome)
+
 const HomePage = lazy(() => import("./pages/HomePage"));
 const ConversationPage = lazy(() => import("./pages/ConversationPage"));
 const UploadPage = lazy(() => import("./pages/UploadPage"));
@@ -31,12 +40,11 @@ function App() {
 function NavWrapper() {
   return (
     <>
-      <div className="sticky top-0 flex self-center p-4 px-9 flex-row text-white justify-between  w-full bg-gradient-to-r from-[#071952] from-10%  via-[#0052A2]   to-[#071952] to-90%  ">
-      <div className="text-l text-bold w-[20%]">
-            <Link to="/">ArtemisDocs Logo.</Link>
-          </div>
+      <div className="sticky top-0 flex self-center p-4 px-9 flex-row text-white justify-between  w-full bg-gradient-to-r from-[#071952] from-10%  via-[#0052A2]   to-[#071952] to-90% z-10">
+        <div className="text-l text-bold w-[20%]">
+          <Link to="/">ArtemisDocs Logo.</Link>
+        </div>
         <div className="  flex-row hidden sm:flex  text-white justify-end gap-[45%]  w-full">
-          
           <div>
             <ul className="flex gap-5">
               <Link to="/">
@@ -48,9 +56,12 @@ function NavWrapper() {
           </div>
           <div>
             <Link to="login">
-              <button className="bg-sky-100 text-slate-800 text-bold rounded py-1 px-3 flex align-center justify-center gap-2">Login <span className="material-symbols-outlined">
-login
-</span></button>
+              <button className="bg-sky-100 text-slate-800 text-semibold rounded py-1 px-3 flex align-center justify-center gap-2">
+                Login{" "}
+                <span className="material-symbols-outlined text-medium font-normal">
+                  login
+                </span>
+              </button>
             </Link>
           </div>
         </div>
