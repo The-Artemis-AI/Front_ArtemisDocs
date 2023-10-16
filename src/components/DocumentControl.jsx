@@ -10,11 +10,11 @@ function DocumentControl() {
         </h4>
       </div>
       <div className="document-nav flex justify-between my-2 ">
-        <Link to="#" className="">
+        <Link to="#" className="font-semibold text-sm">
           {" "}
           Conversations
         </Link>
-        <Link to="#"> Document</Link>
+        <Link to="#" className="font-semibold text-sm"> Document</Link>
         <p>
           {" "}
           <span className="material-symbols-outlined">search</span>
@@ -42,9 +42,24 @@ function DocumentControl() {
         <div className="text-sm font-bold">
           <h2>TODAY</h2>
         </div>
-        <div className="document-wrapper flex align-center justify-between gap-4 bg-black text-white rounded-lg p-2">
+        <div className="document-wrapper relative flex align-center justify-between gap-4 bg-black text-white rounded-lg p-2">
+        <div className="absolute right-1 top-2">
+            <span className="material-symbols-outlined">more_vert</span>
+          </div>
           <div className="h-full  self-center">
-            <span className="material-symbols-outlined">chat_bubble</span>
+            <span className="material-symbols-outlined">chat</span>
+          </div>
+          <div className="text-sm font-normal">
+            <h3 className="text-sm font-bold">AI readliness</h3>
+            <p>The United Nations Development Program</p>
+          </div>
+        </div>
+        <div className="document-wrapper relative flex align-center justify-between gap-4 bg-black text-white rounded-lg p-2">
+          <div className="absolute right-1 top-2">
+            <span className="material-symbols-outlined">more_vert</span>
+          </div>
+          <div className="h-full  self-center">
+            <span className="material-symbols-outlined">chat</span>
           </div>
           <div className="text-sm font-normal">
             <h3 className="text-sm font-bold">AI readliness</h3>

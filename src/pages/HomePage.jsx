@@ -9,7 +9,7 @@ import FAQ from "../components/FAQ";
 import vector1 from "../assets/imgs/pdf-summarise-vector-bg.png";
 import vector2 from "../assets/imgs/pdf-summarise-vector2.png";
 import vector3 from "../assets/imgs/pdf-summarise-vector3.png";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function HomePage() {
   return (
     <div>
@@ -34,7 +34,7 @@ function HomePage() {
             </Link>
           </button>
           <button className="bg-sky-100 text-slate-800 text-bold rounded py-2 px-4">
-            Conversation
+            <Link to="conversation"> Conversation</Link>
           </button>
         </div>
       </div>
@@ -205,7 +205,6 @@ function HomePage() {
             </p>
           </div>
         </div>
-    
       </div>
       <div className="w-full bg-black text-white h-auto p-5 px-20">
         <div className="flex gap-3 justify-between my-3">
@@ -214,13 +213,13 @@ function HomePage() {
             <p>Enhance your productivity by using our services.</p>
             <p>On step away from efficiency</p>
             <button className="bg-primary rounded py-2 px-4  flex gap-2 my-3 hover:bg-sky-300 hover:text-slate-800 ">
-            <Link to="upload">
-              <p className="text-bold text-sky-100">Get Started</p>
-            </Link>
-            <span className="material-symbols-outlined text-sky-100">
-              navigate_next
-            </span>
-          </button>
+              <Link to="upload">
+                <p className="text-bold text-sky-100">Get Started</p>
+              </Link>
+              <span className="material-symbols-outlined text-sky-100">
+                navigate_next
+              </span>
+            </button>
           </div>
           <div>
             <h3 className="mb-2 text-center">Quick links</h3>
@@ -236,21 +235,42 @@ function HomePage() {
             <div>
               <form action="#" method="post" className="flex flex-col gap-2">
                 <div className="flex  gap-2">
-                <input type="text" placeholder="your name" className="text-sm rounded  py-2 px-3 text-black"/>
-                <input type="email" placeholder="your email" name="" id=""  className=" text-sm rounded px-3 py-2 text-black"/>
+                  <input
+                    type="text"
+                    placeholder="your name"
+                    className="text-sm rounded  py-2 px-3 text-black"
+                  />
+                  <input
+                    type="email"
+                    placeholder="your email"
+                    name=""
+                    id=""
+                    className=" text-sm rounded px-3 py-2 text-black"
+                  />
                 </div>
-                <textarea name="" id="" cols="5" rows="10" className="text-sm rounded h-20 p-3 text-black" placeholder="Your message"></textarea>
-               
-                <button type="submit" className="bg-primary rounded py-2 px-3 w-20 text-sm hover:bg-sky-300 hover:text-slate-800 ">Submit</button>
+                <textarea
+                  name=""
+                  id=""
+                  cols="5"
+                  rows="10"
+                  className="text-sm rounded h-20 p-3 text-black"
+                  placeholder="Your message"
+                ></textarea>
+
+                <button
+                  type="submit"
+                  className="bg-primary rounded py-2 px-3 w-20 text-sm hover:bg-sky-300 hover:text-slate-800 "
+                >
+                  Submit
+                </button>
               </form>
             </div>
           </div>
-          
-        </div><hr></hr>
+        </div>
+        <hr></hr>
         <div className="my-5 text-center">
-          
-          ArtemisDocs By Artemis AI &copy; reserved 2023</div>
-          
+          ArtemisDocs By Artemis AI &copy; reserved 2023
+        </div>
       </div>
     </div>
   );
