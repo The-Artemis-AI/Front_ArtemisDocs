@@ -51,7 +51,7 @@ function DocumentControl() {
           </div>
           <div className="text-sm font-normal">
             <h3 className="text-sm font-bold">AI readliness</h3>
-            <p>The United Nations Development Program</p>
+            <p className="text-xs font-light my-1">The United Nations Development Program</p>
           </div>
         </div>
         <div className="document-wrapper relative flex align-center justify-between gap-4 bg-black text-white rounded-lg p-2">
@@ -63,7 +63,7 @@ function DocumentControl() {
           </div>
           <div className="text-sm font-normal">
             <h3 className="text-sm font-bold">AI readliness</h3>
-            <p>The United Nations Development Program</p>
+            <p className="text-xs font-light m-1">The United Nations Development Program</p>
           </div>
         </div>
       </div>
