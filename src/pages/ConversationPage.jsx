@@ -2,6 +2,9 @@ import { useState } from "react";
 import DocumentControl from "../components/DocumentControl";
 import logo from "../assets/imgs/favicon.png";
 import send from "../assets/imgs/img_send.svg";
+import "./../components/css/scrollbar.css"
+import Question from "../components/Question";
+import Response from "../components/Response";
 
 const ConversationPage = ({ messages }) => {
   const [message, setMessage] = useState("");
@@ -63,10 +66,10 @@ const ConversationPage = ({ messages }) => {
       <DocumentControl />
 
       <div
-        className="document-container resizable-container min-w-[35%]   resize-x bg-red-200"
+        className="document-container resizable-container min-w-[35%]   resize-x "
         style={{ width: 300 }}
       >
-        <div className="button-wrap bg-black h-[95%] w-full ">
+        <div className="button-wrap bg-black h-[100%] w-full ">
           <input type="file" id="upload" onChange={handleFileUpload} />
           {uploadedDocument && (
             <div
@@ -84,55 +87,47 @@ const ConversationPage = ({ messages }) => {
           )}
         </div>
       </div>
-      <div className="chat-container p-3 flex flex-col justify-between">
-        <div>
-          {responses.map((response, index) => (
-            <div key={index}>{response}</div>
-          ))}
-        </div>
-        <div className="response-container  h-full p-2 overflow-y-scroll">
-          <div className="received-message flex  justify-start p-2 rounded gap-3 flex-row w-[100%]">
-            <div className="icon w-[5%]">
-              <img src={logo} className=" w-32 scale-[1] " />
-            </div>
-            <div className="content-container w-[70%] bg-blue-500 p-2 text-gray-900 rounded">
-              <div className="content text-xm w-[90%] mb-2">
-                <p className="text-xs">
-                  Hello! I am a multilingual document assistant here to help you
-                  with any questions you may have about the document you
-                  uploaded. The document discusses the performance of a network,
-                  specifically focusing on topics such as bandwidth, throughput,
-                  latency, and the bandwidth-delay product. It also includes
-                  examples to help illustrate these concepts.
-                </p>
-              </div>
-              <div className="time font-bold text-xs text-black">9:30 PM</div>
-            </div>
-          </div>
+      <div className="chat-container px-2 rounded  h-[90vh] py-2 flex flex-col gap-3 relative">
+      
+     
+        <div className="response-container  h-[85%] bg-white rounded-md   p-2 overflow-y-scroll scrollbar-thumb-blue-500 scrollbar-track-gray-200">
+        <Response 
+        response=' Hello! I am a multilingual document assistant here to help you
+        with any questions you may have about the document you
+        uploaded. The document discusses the performance of a network,
+        specifically focusing on topics such as bandwidth, throughput,
+        latency, and the bandwidth-delay product. It also includes
+        examples to help illustrate these concepts.'
+        time="9:22 PM"
+        />
+        <Question 
+        question="What is the meaning of Intellectual conscience as opposed to Dr. Jameson's research conclusion"
+        time="9:33 PM"
+        />
+        <Response 
+        response="His research proves the theories of Cultural Studies. The main theories associated with cultural studies include those of cultural construction, hegemony, Marxism cultural theory, and non-Marxism theory. Early proponents of cultural studies largely believed and adhered to the Marxist approach"
+        time="9:34PM"
+        />
+     
+
+        <Question 
+        question="What are the main points of cultural studies?"
+        time="9:35 PM"
+        />
+
+        <Response 
+        response="Cultural studies researchers generally investigate how cultural practices relate to wider systems of power associated with, or operating through, social phenomena. These include ideology, class structures, national formations, ethnicity, sexual orientation, gender, and generation."
+        time="9:35PM"
+        />
           
-          <div className="question-message flex  justify-end p-2 rounded gap-3 flex-row w-[100%] my-2 self-end justify-self-start">
-            <div className="content-container bg-blue-100 p-2 rounded w-[70%]">
-              <div className="content text-sm w-[90%] mb-2">
-                <p className="text-xs">
-                  Hello! I am a multilingual document assistant here to help you
-                  with any questions you may have about the document you
-                  uploaded. The document discusses the performance of a network,
-                  specifically focusing on topics such as bandwidth, throughput,
-                  latency, and the bandwidth-delay product. It also includes
-                  examples to help illustrate these concepts.
-                </p>
-              </div>
-              <div className="time font-bold text-xs">9:30 PM</div>
-            </div>
-            <div className="icon bg-slate-200 h-8 w-8 rounded-full p-1">
-              <span className="material-symbols-outlined">person</span>
-            </div>
-          </div>
+         
+          
+          
+          
           <div className="sent-message"></div>
         </div>
-        <div className="ask-container flex w-full  flex-col self-center">
-          <form className="ask-container flex justify-between bg-red-700 w-[70%] justify-self-center self-center border-2 border-black">
-            {/* <div className="ask-img"> <img src={logo} alt="logo"/></div> */}
+        <div className="ask-container flex w-full  flex-col  justify-self-end self-center  absolute bottom-[20px] rounded overflow-hidden">
+          <form className="ask-container flex justify-between  w-[70%] justify-self-center self-center border-[.5px] border-black">
             <div className="w-full">
               <input
                 className="p-2 w-full outline-none"
