@@ -2,7 +2,7 @@ import { useState } from "react";
 import DocumentControl from "../components/DocumentControl";
 import logo from "../assets/imgs/favicon.png";
 import send from "../assets/imgs/img_send.svg";
-import "./../components/css/scrollbar.css"
+import "./../assets/css/scrollbar.css"
 import Question from "../components/Question";
 import Response from "../components/Response";
 

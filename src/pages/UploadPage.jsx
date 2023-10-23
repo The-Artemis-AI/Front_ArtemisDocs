@@ -3,10 +3,30 @@ import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SideBar from "../components/SideBar";
 
 function UploadPage() {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [databasePage, setDatabasePage] = useState(false);
+  const [pdfPage, setPdfPage] = useState(false);
+  const [csvPage, setCsvPage] = useState(false);
+
+  const handleDbpage = ()=>{
+    setDatabasePage(true)
+    setCsvPage(false)
+    setPdfPage(false)
+  }
+  const handlePdfpage = ()=>{
+    setPdfPage(true)
+    setDatabasePage(false)
+    setCsvPage(false)
+  }
+  const handleCsvpage = ()=>{
+    setCsvPage(true)
+    setDatabasePage(false)
+    setPdfPage(false)
+  }
 
   const onDrop = async (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -60,8 +80,22 @@ function UploadPage() {
   };
 
   return (
-    <div className="w-[80%] p-5 bg-slate-100 border-solid border-[1px] border-sky-200 h-full flex-col flex mx-auto my-[100px] self-center justify-center rounded">
-      <div className="p-5 flex justify-between">
+    <div className="w-full h-full flex"> 
+    <SideBar 
+    onClickChat= {()=>{}}
+    onClickDatabase= {handleDbpage}
+    onClickCsv= {handleCsvpage}
+    onClickPdf= {handlePdfpage}
+    />  
+   {databasePage ?(<div className="w-[80%] p-5 bg-slate-100 border-solid border-[1px] border-sky-200 h-full flex-col flex mx-auto my-[100px] self-center justify-center rounded">
+   <div className="gap-3 flex flex-col justify-center items-center">
+   <h3> Feature not yet Available</h3>
+   <p>Sign up and be the first to know when it comes</p>
+   <Link to="Signup"><p className="text-blue-500">Sign up</p></Link>
+   </div>
+  </div> ):( <div className="w-[80%] p-5 bg-slate-100 border-solid border-[1px] border-sky-200 h-full flex-col flex mx-auto my-[100px] self-center justify-center rounded">
+   
+    <div className="p-5 flex justify-between">
         
           <div className=" w-[40%] text-bold text-3xl">
             <h1>Upload Your Document</h1>
@@ -168,6 +202,7 @@ function UploadPage() {
           </div>
         </div>
       </div>
+    </div>)}
     </div>
   );
 }
