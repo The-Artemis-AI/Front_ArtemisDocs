@@ -3,7 +3,7 @@ import jwt_decode from "jwt-decode";
 
 function GoogleAouthLogin() {
   return (
-    <div>
+    <div className="w-full  flex flex-col mb-3 items-center">
         <GoogleLogin
     onSuccess={(credentialResponse) => {
         const credentialResponseDecoded = jwt_decode(credentialResponse.credential)
@@ -13,6 +13,7 @@ function GoogleAouthLogin() {
     onError={() => {
       console.log("Login Failed");
     }}
+    className="bg-red-600 w-full"
   /></div>
   )
 }

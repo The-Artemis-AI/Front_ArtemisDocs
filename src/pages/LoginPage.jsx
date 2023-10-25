@@ -33,9 +33,7 @@ export default function Login() {
         }
       );
       if (response.status === 200) {
-        // Handle successful login here
-        // For example, set authentication token in state/local storage
-        // and redirect to the desired page
+    
         setIsLoggedIn(true);
         toast.success("Successful login");
         navigate("/upload");
@@ -50,28 +48,26 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full h-[90vh] flex-align">
+    <div className="w-full h-[100vh] flex-align bg-sky-100">
       <form
         onSubmit={handleSubmit}
-        className=" shadow-grey-500/20 bg-sky-100 shadow-2xl  border-sky-600 border-solid w-[40%] m-auto rounded-md p-4"
+        className="bg-white  w-[70%] lg:w-[40%] m-auto rounded-md p-4 my-50"
       >
         <div>
           <div className="login-page">
-            <h1 className="text-center text-2xl text-bold">
+            <h1 className="text-center text-3xl text-semibold my-3">
               Log in to continue
             </h1>
-            <p className="text-center text-m mb-6">
+            <p className="text-center text-m my-3 mb-5">
               Sign in with your account to continue
             </p>
 
-            <div className="sign-input">
-              <label htmlFor="email" className=" after:content-['*']">
-                Email:
-              </label>
-              <br />
+            <div className="sign-input w-full flex align-center justify-center">
+             
+              
 
               <input
-                className="p-2 border-[1.5px] border-black rounded outline-none after:content-['*']"
+                className="p-2 border-[1px] border-gray-300 rounded outline-none  w-[90%] my-2 py-3"
                 type="email"
                 placeholder="Your Email"
                 name="email"
@@ -80,14 +76,11 @@ export default function Login() {
                 required
               />
             </div>
-            <div className="sign-input">
-              <label htmlFor="password" className=" after:content-['*']">
-                Password:
-              </label>
-              <br />
+            <div className="sign-input w-full flex align-center justify-center">
+            
 
               <input
-                className="p-2 border-[1.5px] border-black rounded outline-none"
+                className="p-2 border-[1px] border-gray-300 rounded outline-none w-[90%] my-2 py-3"
                 type="password"
                 placeholder="Your Password"
                 name="password"
@@ -97,16 +90,20 @@ export default function Login() {
               />
             </div>
              {/* Google login */}
-             <div className="flex flex-column gap-2 m-2">
-              <p>Or sign in with google</p>
-              <GoogleAouthLogin className="w-full bg-black" />
-             </div>
+             <div className="flex flex-col gap-2 m-2  justify-center align-center">
+             <p className="relative text-center my-1   after:ml-0.5  after:border-b-[1px] after:pr-24 after:absolute after:bottom-[30%] after:right-0
+             before:ml-0.5  before:border-b-[1px] before:pr-24 before:absolute before:bottom-[30%] before:left-0
+             "
+             
+             >Or sign in with google</p>
+             <GoogleAouthLogin className="w-full bg-black" />
+            </div>
         
 
-            <div className="sign-input">
+            <div className="sign-input w-full flex justify-center">
               <button
                 type="submit"
-                className="p-2 bg-sky-600 text-white text-semibold rounded"
+                className="p-2 bg-sky-600 self-center text-white text-semibold rounded text-center w-[70%]"
               >
                 Submit
               </button>

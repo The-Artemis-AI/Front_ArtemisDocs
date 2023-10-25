@@ -8,9 +8,8 @@ import GoogleAouthLogin from "../components/GoogleAouthLogin";
 
 
 export default function Login() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+ 
 
   const [formValues, setFormValues] = useState({
     email: "",
@@ -18,8 +17,6 @@ export default function Login() {
     confirmPassword: "",
   });
 
-  //   const initialValues = {  email: '', password: '' };
-  //   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [ConfirmPassword, setConfirmPassword] = useState("");
@@ -32,9 +29,7 @@ export default function Login() {
 
   const validate = (values) => {
     let errors = {};
-    // if (!values.userName) {
-    //   errors.userName = 'UserName is required';
-    // }
+  
     if (!values.email) {
       errors.email = "Email is required";
     }
@@ -91,17 +86,17 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full h-[90vh] flex-align">
-        <form action="#" onSubmit={handleSubmit} className="border-2 border-sky-600 border-solid w-[40%] m-auto rounded-md p-4">
+    <div className="w-full h-[100vh] flex-align bg-sky-100">
+        <form action="#" onSubmit={handleSubmit} className="bg-white  w-[70%] lg:w-[40%] m-auto rounded-md p-4 my-50">
           <div className="login-page-container">
             <div className="login-page" >
-              <h1 className="text-center text-2xl text-bold">Sign Up</h1>
-              <p className="text-center text-m ">Fill the required info </p>
+              <h1 className="text-center text-3xl text-semibold my-3">Create your Account</h1>
+              <p className="text-center text-m my-3 mb-5">Fill the required info </p>
 
-              <div className="sign-input ">
-                <label htmlFor="email">Email:</label><br/>
+              <div className="sign-input w-full flex align-center justify-center">
+                
                 <input
-                className="p-2 border-[1.5px] border-black rounded outline-none"
+                className="p-2 border-[1px] border-gray-300 rounded outline-none  w-[90%] my-2 py-3"
                   type="email"
                   id="email"
                   placeholder="Your Email"
@@ -113,11 +108,11 @@ export default function Login() {
                 />
                 {formErrors.email && <p>{formErrors.email}</p>}
               </div>
-              <div className="sign-input  ">
-              <label htmlFor="password">Password:</label><br/>
+              <div className="sign-input   w-full flex align-center justify-center">
+             
 
                 <input
-                className="p-2 border-[1.5px] border-black rounded outline-none"
+                className="p-2 border-[1px] border-gray-300 rounded outline-none w-[90%] my-2 py-3"
 
                   type="password"
                   placeholder="Your Password"
@@ -127,11 +122,11 @@ export default function Login() {
                 />
                 {formErrors.password && <p>{formErrors.password}</p>}
               </div>
-              <div className="sign-input">
-              <label htmlFor="confirmPassword">Confirm Password:</label><br/>
+              <div className="sign-input w-full flex align-center justify-center">
+             
 
                 <input
-                className="p-2 border-[1.5px] border-black rounded outline-none"
+                className="p-2 border-[1px] border-gray-300 rounded outline-none w-[90%] my-2 py-3"
 
                   type="password"
                   placeholder="Confirm password"
@@ -142,13 +137,17 @@ export default function Login() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
-              <div className="flex flex-column gap-2 m-2">
-              <p>Or sign in with google</p>
+              <div className="flex flex-col gap-2 m-2  justify-center align-center">
+              <p className="relative text-center my-1   after:ml-0.5  after:border-b-[1px] after:pr-24 after:absolute after:bottom-[30%] after:right-0
+              before:ml-0.5  before:border-b-[1px] before:pr-24 before:absolute before:bottom-[30%] before:left-0
+              "
+              
+              >Or sign in with google</p>
               <GoogleAouthLogin className="w-full bg-black" />
              </div>
 
-              <div className="sign-input">
-                <button type="submit" className="p-2 bg-sky-600 self-center text-white text-semibold rounded" >Submit</button>
+              <div className="sign-input w-full flex justify-center">
+                <button type="submit" className="p-2 bg-sky-600 self-center text-white text-semibold rounded text-center w-[70%]" >Submit</button>
               </div>
             </div>
           </div>

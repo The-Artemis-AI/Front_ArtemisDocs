@@ -40,18 +40,18 @@ function App() {
 function NavWrapper() {
   return (
     <>
-      <div className="sticky top-0 flex self-center p-4 px-9 flex-row text-white justify-between  w-full bg-gradient-to-r from-[#071952] from-10%  via-[#0052A2]   to-[#071952] to-90% z-10">
+      <div className=" flex self-center p-4 px-9 flex-row text-sky-700 justify-between  w-full border-b border-gray-200 bg-opacity-30 backdrop-filter backdrop-blur-lg  top-0 z-10 bg-primary">
         <div className="text-l text-bold w-[20%]">
           <Link to="/">ArtemisDocs Logo.</Link>
         </div>
-        <div className="  flex-row hidden sm:flex  text-white justify-end gap-[45%]  w-full">
+        <div className="  flex-row hidden sm:flex  text-sky-700  justify-end gap-[45%]  w-full">
           <div>
             <ul className="flex gap-5">
               <Link to="/">
-                <li>Home</li>
+                <li className="font-semibold hover:text-sky-200 hover:font-bold text-white cursor-pointer">Home</li>
               </Link>
-              <li>Docs</li>
-              <li>Contact</li>
+              <li className="font-semibold hover:text-sky-200 hover:font-bold text-white cursor-pointer">Docs</li>
+              <li className="font-semibold hover:text-sky-200 hover:font-bold text-white cursor-pointer">Contact</li>
             </ul>
           </div>
           <div>

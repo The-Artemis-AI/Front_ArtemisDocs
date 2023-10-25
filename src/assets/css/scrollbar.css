@@ -15,3 +15,8 @@
     border-radius: 10px;
   }
   
+
+  .resizable-container{
+    resize:horizontal;
+    
+  }

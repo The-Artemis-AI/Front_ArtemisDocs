@@ -70,7 +70,12 @@ const ConversationPage = ({ messages }) => {
         style={{ width: 300 }}
       >
         <div className="button-wrap bg-black h-[100%] w-full ">
-          <input type="file" id="upload" onChange={handleFileUpload} />
+          <input type="file" id="upload" onChange={handleFileUpload} className="block w-full text-sm text-slate-500
+          file:mr-4 file:py-2 file:px-4
+          file:rounded-full file:border-0
+          file:text-sm file:font-semibold
+          file:bg-violet-50 file:text-violet-700
+          hover:file:bg-violet-100" />
           {uploadedDocument && (
             <div
               className="document h-full resize-x w-[100%] bg-green-600 "

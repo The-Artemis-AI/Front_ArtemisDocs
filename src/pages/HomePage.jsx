@@ -16,10 +16,13 @@ function HomePage() {
       {/* <div className="w-full bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% h-[100vh]  flex flex-col">  */}
       <div className="relative w-full align-center justify-center bg-gradient-to-r from-primary from-10%  via-[#0052A2]   to-[#071952] to-90% h-[100vh]  flex flex-col">
         <h1 className="text-3xl md:text-5xl lg:text-6xl my-5 font-bold  text-white text-center justify-center self-center w-[70%]">
-          Chat with your <span className="text-blue-500">Documents</span> , An
-          amazing way to boost your productivity
+          Chat with your <span className="text-blue-500">Documents</span> ,
         </h1>
-        <h4 className="text-2xl font-normal  text-white text-center  m-2">
+        <h5 className="text-lg md:text-xl lg:text-3xl my-5 font-bold  text-white text-center justify-center self-center w-[70%]">
+        An
+       amazing way to boost your productivity
+       </h5>
+        <h4 className="text-xl font-normal  text-white text-center  m-2">
           Upload your document and interact with it.
         </h4>
         <p className="text-large text-white text-center">
@@ -206,7 +209,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-black text-white h-auto p-5 px-20">
+      <div className="w-full bg-slate-900 text-white h-auto p-5 px-20">
         <div className="flex gap-3 justify-between my-3">
           <div className="gap-3 flex flex-col items-start">
             Artemis Docs
@@ -253,7 +256,7 @@ function HomePage() {
                   id=""
                   cols="5"
                   rows="10"
-                  className="text-sm rounded h-20 p-3 text-black"
+                  className="text-sm rounded h-20 p-3 text-black resize-none"
                   placeholder="Your message"
                 ></textarea>
 
