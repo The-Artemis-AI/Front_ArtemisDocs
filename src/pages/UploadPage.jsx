@@ -4,14 +4,9 @@ import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SideBar from "../components/SideBar";
+import "../assets/css/progress.css"
 
 function UploadPage() {
-  const [uploadedFile, setUploadedFile] = useState(null);
-  const [uploadProgress, setUploadProgress] = useState(0);
-  const [databasePage, setDatabasePage] = useState(false);
-  const [pdfPage, setPdfPage] = useState(false);
-  const [csvPage, setCsvPage] = useState(false);
-
   const handleDbpage = ()=>{
     setDatabasePage(true)
     setCsvPage(false)
@@ -28,31 +23,33 @@ function UploadPage() {
     setPdfPage(false)
   }
 
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [databasePage, setDatabasePage] = useState(false);
+  const [pdfPage, setPdfPage] = useState(false);
+  const [csvPage, setCsvPage] = useState(false);
+
   const onDrop = async (acceptedFiles) => {
     const file = acceptedFiles[0];
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append('file', file);
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/upload_text/",
-        formData,
-        {
-          onUploadProgress: (progressEvent) => {
-            const progress = (progressEvent.loaded / progressEvent.total) * 100;
-            setUploadProgress(progress);
-          },
-        }
-      );
+      const response = await axios.post('/api/upload', formData, {
+        onUploadProgress: (progressEvent) => {
+          const progress = (progressEvent.loaded / progressEvent.total) * 100;
+          setUploadProgress(progress);
+        },
+      });
 
       setUploadedFile(response.data);
       setUploadProgress(0); // Reset progress bar
     } catch (error) {
-      console.error("Error uploading document:", error);
+      console.error('Error uploading document:', error);
     }
-
- 
-
+    
+    // Simulate file upload with a setTimeout for demonstration
+    // In a real application, you would use an API call to upload the file
     const simulateFileUpload = () => {
       let progress = 0;
       const interval = setInterval(() => {
@@ -66,12 +63,15 @@ function UploadPage() {
     };
 
     simulateFileUpload();
+
   };
+
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: [".pdf", ".csv", ".doc", ".docx"], // You can specify the file types you want to accept
+    accept: ['.pdf', '.csv', '.doc', '.docx'],  // You can specify the file types you want to accept
   });
+
 
   const [activeButton, setActiveButton] = useState("document-button");
 
@@ -93,7 +93,7 @@ function UploadPage() {
    <p>Sign up and be the first to know when it comes</p>
    <Link to="Signup"><p className="text-blue-500">Sign up</p></Link>
    </div>
-  </div> ):( <div className="w-[80%] p-5 bg-slate-100 border-solid border-[1px] border-sky-200 h-full flex-col flex mx-auto my-[100px] self-center justify-center rounded">
+  </div> ):( <div className="w-[80%] p-5 bg-slate-100 border-solid border-[1px] border-sky-200 h-full flex-col flex mx-auto  self-center justify-center rounded">
    
     <div className="p-5 flex justify-between">
         
@@ -114,7 +114,7 @@ function UploadPage() {
           <div className="flex gap-5 align-center justify-center rounded-full bg-white w-[290px] p-[3px] my-2">
             <button
               id="document-button"
-              className={activeButton === "document-button" ? "active-btn bg-slate-400 p-1 ease-in " : ""}
+              className={activeButton === "document-button" ? "active-btn bg-gray-300 p-1 ease-in " : ""}
               onClick={() => handleButtonClick("document-button")}
             >
               Upload Document
@@ -122,45 +122,45 @@ function UploadPage() {
 
             <button
               id="url-button"
-              className={activeButton === "url-button" ? "active-btn bg-slate-400 p-1" : ""}
+              className={activeButton === "url-button" ? "active-btn bg-gray-300 p-1" : ""}
               onClick={() => handleButtonClick("url-button")}
             >
-              {" "}
               Upload from URL
             </button>
           </div>
         </div>
         <div className="section-wrapper  h-[35%]">
-          {activeButton === "document-button" && (
-            <div className="section2 p-5 border-spacing-2 rounded-md bg-white border-solid border-[1px] border-sky-500 w-[60%] m-auto my-2 justify-center align-center flex flex-row cursor-pointer">
-              <div {...getRootProps()} className="grid items-center ">
-                <input {...getInputProps()} />
-                {
-                  <div>
-                    <p style={{ textAlign: "center" }}>
-                      <span className="material-symbols-outlined">
-                        cloud_upload
-                      </span>
-                    </p>
-                    <p>Drop file here.</p>
-                  </div>
-                }
-              </div>
-              {uploadProgress > 0 && (
-                <div className=" h-1 w-[90%] bg-grey-100 roundend m-auto">
-                  <div
-                    className=" h-full bg-[#3498d roundened ease-linear]"
-                    style={{ width: `${uploadProgress}%` }}
-                  ></div>
-                </div>
-              )}
-              {uploadedFile && (
-                <div className="uploaded-file">
-                  <p>
-                    Uploaded Document: <strong>{uploadedFile.name}</strong>{" "}
-                  </p>
-                </div>
-              )}
+        {activeButton === 'document-button' && (
+    
+          <div className="section2 p-5 border-spacing-2 rounded-md bg-white border-solid border-[1px] border-sky-500 w-[60%] m-auto my-2 justify-center align-center flex flex-row cursor-pointer">
+          <div {...getRootProps()} className="dropzone grid items-center">
+          <input {...getInputProps()} />
+          { (<div>
+            <p style={{textAlign:"center"}}><span className="material-symbols-outlined text-gray-500">
+        cloud_upload
+        </span></p>
+          <p className="text-gray-500">Drag & drop a PDF file here, or click to select one.</p>
+          </div>
+          )}
+        </div>
+        {uploadProgress > 0 && (
+          <div className="progress-bar">
+            <div
+              className="progress h-1 w-full bg-blue-400 rounded-full "
+              style={{ width: `${uploadProgress}%` }}
+            ></div>
+          </div>
+        )}
+        
+        
+          </div>
+          
+            )}
+          {uploadedFile && (
+            <div className="uploaded-file">
+              <p className="text-sm">
+                Uploaded Document: <strong >{uploadedFile.name}</strong>{" "}
+              </p>
             </div>
           )}
           {activeButton === "url-button" && (

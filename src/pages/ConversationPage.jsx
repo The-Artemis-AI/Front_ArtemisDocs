@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DocumentControl from "../components/DocumentControl";
 import logo from "../assets/imgs/favicon.png";
 import send from "../assets/imgs/img_send.svg";
@@ -14,14 +14,38 @@ const ConversationPage = ({ messages }) => {
     { message: "What is the reson of tax increase in America?", time: "5:29" },
     { message: "What is the reson of tax increase in America?", time: "5:29" },
   ]);
+  const [isLoading, setIsLoading] = useState(false)
+  const [color, setColor] = useState("gray");
+  const [question, setQuestion] = useState("");
 
-  const handleSubmitQuestion =()=>{
+  const handleQuestionChange = (event) => {
+    setQuestion(event.target.value);
+  };
+  
+  useEffect(() => {
+    if (question.length > 0) {
+      setColor('black');
+    } else {
+      setColor('gray');
+    }
+  }, [question]);
+
+
+  const handleSubmitQuestion =(event)=>{
+    event.preventDefault()
     let newMsg= {message,time:"10:34"}
     console.log('new msg',newMsg)
     //setChatMessages([...chatMessages, newMsg]);
     setTryMessages([...tryMessages, newMsg])
     
+  }
 
+  const handleChangeIcon =(event)=>{
+    setIsLoading(true);
+    event.preventDefault()
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   }
 
   const handleSendMessage = () => {
@@ -33,6 +57,7 @@ const ConversationPage = ({ messages }) => {
 
   const [questions, setQuestions] = useState([]);
   const [responses, setResponses] = useState([]);
+
 
   const handleAskQuestion = (question) => {
     // endpoint: localhost:8000/ask/<response> to get an answer
@@ -89,7 +114,8 @@ const ConversationPage = ({ messages }) => {
                 style={{ resize: "horizontal" }}
               />
             </div>
-          )}
+          )
+        }
         </div>
       </div>
       <div className="chat-container px-2 rounded  h-[90vh] py-2 flex flex-col gap-3 relative">
@@ -125,16 +151,15 @@ const ConversationPage = ({ messages }) => {
         time="9:35PM"
         />
           
-         
-          
-          
           
           <div className="sent-message"></div>
         </div>
-        <div className="ask-container flex w-full  flex-col  justify-self-end self-center  absolute bottom-[20px] rounded overflow-hidden">
-          <form className="ask-container flex justify-between  w-[70%] justify-self-center self-center border-[.5px] border-black">
+     <div className="ask-container flex w-full  flex-col  justify-self-end self-center  absolute bottom-[20px] rounded-lg overflow-hidden">
+          <form className="ask-container flex justify-between  w-[70%] justify-self-center self-center border-[.5px] border-gray-400 rounded-md overflow-hidden">
             <div className="w-full">
               <input
+              value={question} 
+              onChange={handleQuestionChange}
                 className="p-2 w-full outline-none"
                 type="text"
                 placeholder="Ask a question..."
@@ -147,13 +172,17 @@ const ConversationPage = ({ messages }) => {
                 }}
               />
             </div>
-            <button type="send" className="send-btn" onSubmit={handleSubmitQuestion}>
-              <div className="bg-black h-full px-3 flex flex-col items-center justify-center hover:bg-slate-950">
+           {!isLoading? (<button type="send" className="send-btn" onClick={handleChangeIcon}>
+              <div className=" h-full px-3 flex flex-col items-center justify-center hover:bg-slate-950" style={{backgroundColor:`${color}`}}>
                 <img src={send} />
               </div>
-            </button>
+            </button>):(<button type="send" className="send-btn" onClick>
+            <div className=" h-full flex flex-col items-center justify-center hover:bg-slate-950 mr-[-2px]" style={{backgroundColor:"black"}}>
+            <div className="lds-facebook"><div></div><div></div><div></div></div>
+            </div>
+          </button>)}
           </form>
-        </div>
+        </div>)
       </div>
     </div>
   );

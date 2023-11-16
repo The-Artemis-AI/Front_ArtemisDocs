@@ -9,27 +9,27 @@ function SideBar(props) {
        
     <button onClick={props.onClickChat}>
       <div>
-        <span className="material-symbols-outlined text-white rounded-full bg-slate-700 p-2 mb-4">chat_bubble</span>
+        <span className="material-symbols-outlined text-white rounded-full bg-slate-700 p-2 mb-4 mx-auto ml-2">chat_bubble</span>
       </div>
     </button>
     <button onClick={props.onClickPdf}>
       <div>
-        <span className="material-symbols-outlined  text-slate-700 rounded-full bg-slate-300 p-2 mb-4">picture_as_pdf</span>
+        <span className="material-symbols-outlined  text-slate-700 rounded-full bg-slate-300 p-2 mb-4 ml-2">picture_as_pdf</span>
       </div>
     </button>
     <button onClick={props.onClickDatabase}>
       <div>
-        <span className="material-symbols-outlined  text-slate-700 rounded-full bg-slate-300 p-2 mb-4">database</span>
+        <span className="material-symbols-outlined  text-slate-700 rounded-full bg-slate-300 p-2 mb-4 ml-2">database</span>
       </div>
     </button>
     <button onClick={props.onClickCsv}>
     <div>
-      <span className="material-symbols-outlined  text-slate-700 rounded-full bg-slate-300 p-2 mb-4">csv</span>
+      <span className="material-symbols-outlined  text-slate-700 rounded-full bg-slate-300 p-2 mb-4 ml-2">csv</span>
     </div>
   </button>
     <button >
       <div>
-        <span className="material-symbols-outlined  text-slate-700 rounded-full bg-slate-300 p-2 mb-4">question_mark</span>
+        <span className="material-symbols-outlined  text-slate-700 rounded-full bg-slate-300 p-2 mb-4 ml-2">question_mark</span>
       </div>
     </button>
   

@@ -57,7 +57,7 @@ function NavWrapper() {
           <div>
             <Link to="login">
               <button className="bg-sky-100 text-slate-800 text-semibold rounded py-1 px-3 flex align-center justify-center gap-2">
-                Login{" "}
+                Login
                 <span className="material-symbols-outlined text-medium font-normal">
                   login
                 </span>
