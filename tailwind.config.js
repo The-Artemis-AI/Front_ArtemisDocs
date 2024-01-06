@@ -8,6 +8,8 @@ export default {
     extend: {
       colors:{
         primary:'#071952',
+        secondary:"#021F44",
+        myOrange:"#F24E1E",
       }
     },
   },

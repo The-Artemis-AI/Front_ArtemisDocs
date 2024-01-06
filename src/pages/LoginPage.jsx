@@ -3,9 +3,9 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import frame from "../assets/imgs/Frame.png"
 import GoogleAouthLogin from "../components/GoogleAouthLogin";
-
+import Footer from "../components/Footer";
 export default function Login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -48,10 +48,22 @@ export default function Login() {
   };
 
   return (
-    <div className="w-full h-[100vh] flex-align bg-sky-100">
-      <form
+    <div className="relative w-full align-center flex flex-col  h-full" style={{ backgroundImage:`url(${frame})`}}>
+
+    <header className=" mx-6 flex flex-row items-center justify-between h-[10%] w-[90%] my-4">
+    <div><Link to="/"><p>ARTEMIS LOGO.</p></Link></div>
+    <div>
+    <ul className="flex space-x-4">
+    <Link to="/"> <li>Home</li></Link>
+    <Link to="conversation"><li>Conversation</li></Link>
+    <li>Contact</li>
+    </ul>
+    </div>
+    </header>  
+    
+    <form
         onSubmit={handleSubmit}
-        className="bg-white  w-[70%] lg:w-[40%] m-auto rounded-md p-4 my-50"
+        className="bg-white  w-[60%] lg:w-[40%] m-auto rounded-md p-4 my-6"
       >
         <div>
           <div className="login-page">
@@ -63,22 +75,24 @@ export default function Login() {
             </p>
 
             <div className="sign-input w-full flex align-center justify-center">
-             
-              
-
-              <input
-                className="p-2 border-[1px] border-gray-300 rounded outline-none  w-[90%] my-2 py-3"
-                type="email"
-                placeholder="Your Email"
-                name="email"
-                value={formValues.email}
-                onChange={handleChange}
-                required
-              />
+             <div className="flex-col w-full">  
+            <p>Email:</p>
+            <input
+              className="p-2 border-[1px] border-gray-300 rounded outline-none  w-[90%] my-2 py-3"
+              type="email"
+              placeholder="Your Email"
+              name="email"
+              value={formValues.email}
+              onChange={handleChange}
+              required
+            />
+             </div>
+          
             </div>
             <div className="sign-input w-full flex align-center justify-center">
             
-
+            <div className="flex-col w-full"> 
+             <p>Password:</p>
               <input
                 className="p-2 border-[1px] border-gray-300 rounded outline-none w-[90%] my-2 py-3"
                 type="password"
@@ -89,10 +103,12 @@ export default function Login() {
                 required
               />
             </div>
+ 
+            </div>
              {/* Google login */}
              <div className="flex flex-col gap-2 m-2  justify-center align-center">
-             <p className="relative text-center my-1   after:ml-0.5  after:border-b-[1px] after:pr-24 after:absolute after:bottom-[30%] after:right-0
-             before:ml-0.5  before:border-b-[1px] before:pr-24 before:absolute before:bottom-[30%] before:left-0
+             <p className="relative text-center my-1 
+
              "
              
              >Or sign in with google</p>
@@ -113,13 +129,19 @@ export default function Login() {
        
         
         <p className="text-center">
-          Don't have an account.{" "}
+          Do not have an account.{" "}
           <Link to="/signup">
             <span className="text-sky-500">Create account</span>
           </Link>
         </p>
       </form>
+      <Footer/>
       <ToastContainer />
     </div>
   );
 }
+
+
+// after:ml-0.5  after:border-b-[1px] after:pr-24 after:absolute after:bottom-[30%] after:right-0
+// before:ml-0.5  before:border-b-[1px] before:pr-24 before:absolute before:bottom-[30%] before:left-0
+

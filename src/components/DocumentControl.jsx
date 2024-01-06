@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 
 function DocumentControl() {
   return (
-    <div className="document-side-container h-[90vh] p-2 bg-blue-900 w-60">
+    <div className="document-side-container min-h-full p-2 bg-blue-500 w-60">
       <div className="document-header flex text-lg font-semibold gap-3 justify-center ">
         <h1>ArtemisDocs</h1>
         <h4 className="text-xs self-center px-1 bg-sky-100 rounded-2xl">
           Free
         </h4>
       </div>
-      <div className="document-nav flex justify-between my-2 ">
+      <div className="document-nav flex justify-between my-2 mx-1">
         <Link to="#" className="font-semibold text-sm">
-          {" "}
+        
           Conversations
         </Link>
         <Link to="#" className="font-semibold text-sm"> Document</Link>
@@ -38,6 +38,7 @@ function DocumentControl() {
           </button>
         </div>
       </div>
+      
       <div className="open-documents flex flex-col gap-2 my-4">
         <div className="text-sm font-bold">
           <h2>TODAY</h2>

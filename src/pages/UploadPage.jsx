@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import "../assets/css/progress.css"
+import ReadCSVPage from "./ReadCSVPage";
 
 function UploadPage() {
   const handleDbpage = ()=>{
@@ -93,7 +94,7 @@ function UploadPage() {
    <p>Sign up and be the first to know when it comes</p>
    <Link to="Signup"><p className="text-blue-500">Sign up</p></Link>
    </div>
-  </div> ):( <div className="w-[80%] p-5 bg-slate-100 border-solid border-[1px] border-sky-200 h-full flex-col flex mx-auto  self-center justify-center rounded">
+  </div> ): csvPage?(<ReadCSVPage/>) :( <div className="w-[80%] p-5 bg-slate-100 border-solid border-[1px] border-sky-200 h-full flex-col flex mx-auto  self-center justify-center rounded">
    
     <div className="p-5 flex justify-between">
         
@@ -132,10 +133,10 @@ function UploadPage() {
         <div className="section-wrapper  h-[35%]">
         {activeButton === 'document-button' && (
     
-          <div className="section2 p-5 border-spacing-2 rounded-md bg-white border-solid border-[1px] border-sky-500 w-[60%] m-auto my-2 justify-center align-center flex flex-row cursor-pointer">
+          <div className="section2 p-5 border-spacing-2 rounded-md bg-white border-solid border-[1px] border-sky-500 w-[60%] m-auto my-2 justify-center align-center flex flex-col cursor-pointer">
           <div {...getRootProps()} className="dropzone grid items-center">
           <input {...getInputProps()} />
-          { (<div>
+          {(uploadProgress == 0 || uploadProgress == 100) && (<div>
             <p style={{textAlign:"center"}}><span className="material-symbols-outlined text-gray-500">
         cloud_upload
         </span></p>
@@ -143,24 +144,35 @@ function UploadPage() {
           </div>
           )}
         </div>
-        {uploadProgress > 0 && (
+        {(uploadProgress > 0 && uploadProgress < 99) && (
+          <div className="w-full justify-center items-center">
+          <p className="text-center  my-2">Loading...</p>
           <div className="progress-bar">
             <div
-              className="progress h-1 w-full bg-blue-400 rounded-full "
+              className="progress h-2 w-full bg-blue-400 rounded-full "
               style={{ width: `${uploadProgress}%` }}
             ></div>
           </div>
+          </div>
         )}
-        
+        {(uploadProgress == 100) && (
+          <div className="">
+           <p className="text-xs">Upload Complete</p>
+          </div>
+        )}
         
           </div>
           
             )}
-          {uploadedFile && (
-            <div className="uploaded-file">
-              <p className="text-sm">
-                Uploaded Document: <strong >{uploadedFile.name}</strong>{" "}
+          {(uploadedFile && activeButton === 'document-button') &&(
+            <div className="uploaded-file justify-center align-center bg-white self-start mx-auto py-2 rounded-full px-2 flex-row items-center w-[60%]">
+              <p className="text-sm ">
+                Uploaded Document: <strong >{uploadedFile.name}</strong>
+              <span className="material-symbols-outlined text-red-600 text-sm items-center justify-center  ml-2">cancel</span>
+
               </p>
+
+
             </div>
           )}
           {activeButton === "url-button" && (
@@ -184,8 +196,8 @@ function UploadPage() {
           )}
         </div>
 
-        <div className="section3">
-          <div className="upper-wrapper flex justify-between">
+        <div className="section3 mt-6 ">
+          <div className="upper-wrapper flex justify-between items-center h-[80%] justify-self-end">
             <div className="left-section">
               <div className='flex justify-between '>
                 <p>

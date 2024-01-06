@@ -9,7 +9,7 @@ function Question(props) {
           {props.question}
         </p>
       </div>
-      <div className="time font-bold text-xs">{props.time}</div>
+  {/* <div className="time font-bold text-xs">{props.time}</div>*/}
     </div>
     <div className="icon bg-slate-200 h-8 w-8 rounded-full p-1">
       <span className="material-symbols-outlined">person</span>

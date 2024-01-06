@@ -5,7 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, Link } from "react-router-dom";
 import GoogleAouthLogin from "../components/GoogleAouthLogin";
-
+import frame from "../assets/imgs/Frame.png"
+import Footer from "../components/Footer";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -85,76 +86,115 @@ export default function Login() {
     navigate("/LoginPage");
   };
 
+  
   return (
-    <div className="w-full h-[100vh] flex-align bg-sky-100">
-        <form action="#" onSubmit={handleSubmit} className="bg-white  w-[70%] lg:w-[40%] m-auto rounded-md p-4 my-50">
-          <div className="login-page-container">
-            <div className="login-page" >
-              <h1 className="text-center text-3xl text-semibold my-3">Create your Account</h1>
-              <p className="text-center text-m my-3 mb-5">Fill the required info </p>
+    <div className="relative w-full align-center flex flex-col  h-full" style={{ backgroundImage:`url(${frame})`}}>
 
-              <div className="sign-input w-full flex align-center justify-center">
-                
-                <input
-                className="p-2 border-[1px] border-gray-300 rounded outline-none  w-[90%] my-2 py-3"
-                  type="email"
-                  id="email"
-                  placeholder="Your Email"
-                  name="email"
-                  //   onChange={(e) => setEmail(e.target.value)}
-                  value={formValues.email}
-                  onChange={handleChange}
-                  required
-                />
-                {formErrors.email && <p>{formErrors.email}</p>}
-              </div>
-              <div className="sign-input   w-full flex align-center justify-center">
+    <header className=" mx-6 flex flex-row items-center justify-between h-[10%] w-[90%] my-4">
+    <div><Link to="/"><p>ARTEMIS LOGO.</p></Link></div>
+    <div>
+    <ul className="flex space-x-4">
+    <Link to="/"> <li>Home</li></Link>
+    <Link to="conversation"><li>Conversation</li></Link>
+    <li>Contact</li>
+    </ul>
+    </div>
+    </header>  
+    
+    <form
+        onSubmit={handleSubmit}
+        className="bg-white  w-[60%] lg:w-[40%] m-auto rounded-md p-4 my-6"
+      >
+        <div>
+          <div className="login-page">
+            <h1 className="text-center text-myOrange text-3xl text-semibold my-3">
+              Create Account
+            </h1>
+            <p className="text-center text-m my-3 mb-5">
+              Create your account to continue
+            </p>
+
+            <div className="sign-input w-full flex align-center justify-center">
+             <div className="flex-col w-full">  
+            <p>Email:</p>
+            <input
+            className="p-2 border-[1px] border-gray-300 rounded outline-none  w-[90%] my-2 py-3"
+              type="email"
+              id="email"
+              placeholder="Your Email"
+              name="email"
+              //   onChange={(e) => setEmail(e.target.value)}
+              value={formValues.email}
+              onChange={handleChange}
+              required
+            />
+            {formErrors.email && <p>{formErrors.email}</p>}
+            </div>
+          
+            </div>
+            <div className="sign-input w-full flex align-center justify-center">
+            
+            <div className="flex-col w-full"> 
+             <p>Password:</p>
+             <input
+             className="p-2 border-[1px] border-gray-300 rounded outline-none w-[90%] my-2 py-3"
              
-
-                <input
-                className="p-2 border-[1px] border-gray-300 rounded outline-none w-[90%] my-2 py-3"
-
-                  type="password"
-                  placeholder="Your Password"
-                  id="password"
-                  name="password"
-                  onChange={handleChange}
-                />
-                {formErrors.password && <p>{formErrors.password}</p>}
-              </div>
-              <div className="sign-input w-full flex align-center justify-center">
-             
-
-                <input
-                className="p-2 border-[1px] border-gray-300 rounded outline-none w-[90%] my-2 py-3"
-
-                  type="password"
-                  placeholder="Confirm password"
-                  required
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  value={ConfirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </div>
-              <div className="flex flex-col gap-2 m-2  justify-center align-center">
-              <p className="relative text-center my-1   after:ml-0.5  after:border-b-[1px] after:pr-24 after:absolute after:bottom-[30%] after:right-0
-              before:ml-0.5  before:border-b-[1px] before:pr-24 before:absolute before:bottom-[30%] before:left-0
-              "
-              
-              >Or sign in with google</p>
-              <GoogleAouthLogin className="w-full bg-black" />
+               type="password"
+               placeholder="Your Password"
+               id="password"
+               name="password"
+               onChange={handleChange}
+             />
+             {formErrors.password && <p>{formErrors.password}</p>}
              </div>
+           
+ 
+            </div>
+            <div className="flex-col w-full"> 
+            <p>Confirm Password:</p>
+            <input
+            className="p-2 border-[1px] border-gray-300 rounded outline-none w-[90%] my-2 py-3"
+              type="password"
+              placeholder="Confirm password"
+              required
+              name="confirmPassword"
+              id="confirmPassword"
+              value={ConfirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            </div>
 
-              <div className="sign-input w-full flex justify-center">
-                <button type="submit" className="p-2 bg-sky-600 self-center text-white text-semibold rounded text-center w-[70%]" >Submit</button>
-              </div>
+             {/* Google login */}
+             <div className="flex flex-col gap-2 m-2  justify-center align-center">
+             <p className="relative text-center my-1 
+
+             "
+             
+             >Or sign in with google</p>
+             <GoogleAouthLogin className="w-full bg-black" />
+            </div>
+        
+
+            <div className="sign-input w-full flex justify-center">
+              <button
+                type="submit"
+                className="p-2 bg-myOrange self-center text-myOrange text-semibold rounded text-center w-[70%]"
+              >
+                Submit
+              </button>
             </div>
           </div>
-      <p className="text-center">Already have an account. <Link to="/login"><span className="text-sky-500">Sign in</span></Link></p>
-
-        </form>
-   
+        </div>
+       
+        
+        <p className="text-center">
+          Already have an account.
+          <Link to="/login">
+            <span className="text-sky-500"> Login</span>
+          </Link>
+        </p>
+      </form>
+      <Footer/>
       <ToastContainer />
     </div>
   );

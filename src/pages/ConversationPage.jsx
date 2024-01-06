@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import DocumentControl from "../components/DocumentControl";
 import logo from "../assets/imgs/favicon.png";
 import send from "../assets/imgs/img_send.svg";
 import "./../assets/css/scrollbar.css"
 import Question from "../components/Question";
 import Response from "../components/Response";
+import ReadCSVPage from "./ReadCSVPage";
+import { TiAttachmentOutline } from "react-icons/ti";
+import { IoIosClose } from "react-icons/io";
 
 const ConversationPage = ({ messages }) => {
   const [message, setMessage] = useState("");
@@ -17,6 +20,24 @@ const ConversationPage = ({ messages }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [color, setColor] = useState("gray");
   const [question, setQuestion] = useState("");
+const [showUpload, setShowUpload]= useState(false)
+const divRef = useRef(null);
+
+// const handleClickOutside = (event) => {
+//   if (divRef.current && !divRef.current.contains(event.target)) {
+//     setShowUpload(false);
+//   }
+// };
+
+// // Add event listener when the component mounts
+// useEffect(() => {
+//   document.addEventListener('click', handleClickOutside);
+
+//   // Remove event listener when the component unmounts
+//   return () => {
+//     document.removeEventListener('click', handleClickOutside);
+//   };
+// }, [])
 
   const handleQuestionChange = (event) => {
     setQuestion(event.target.value);
@@ -87,14 +108,14 @@ const ConversationPage = ({ messages }) => {
   };
 
   return (
-    <div className="conversation-container flex bg-sky-300 ">
+    <div className="conversation-container flex bg-sky-300  min-h-[100vh] ">
       <DocumentControl />
 
       <div
         className="document-container resizable-container min-w-[35%]   resize-x "
         style={{ width: 300 }}
       >
-        <div className="button-wrap bg-black h-[100%] w-full ">
+        <div className="button-wrap bg-black  w-full min-h-full">
           <input type="file" id="upload" onChange={handleFileUpload} className="block w-full text-sm text-slate-500
           file:mr-4 file:py-2 file:px-4
           file:rounded-full file:border-0
@@ -103,15 +124,15 @@ const ConversationPage = ({ messages }) => {
           hover:file:bg-violet-100" />
           {uploadedDocument && (
             <div
-              className="document h-full resize-x w-[100%] bg-green-600 "
+              className="document resize-x w-[100%] min-h-[96vh] bg-green-600 "
               // style={{ width: containerWidth + "px" }}
               onDrag={handleResize}
             >
               <embed
                 src={URL.createObjectURL(uploadedDocument)}
                 width="100%"
-                height="100%"
-                style={{ resize: "horizontal" }}
+                height="580vh"
+                style={{ resize: "vertical" }}
               />
             </div>
           )
@@ -154,9 +175,29 @@ const ConversationPage = ({ messages }) => {
           
           <div className="sent-message"></div>
         </div>
-     <div className="ask-container flex w-full  flex-col  justify-self-end self-center  absolute bottom-[20px] rounded-lg overflow-hidden">
-          <form className="ask-container flex justify-between  w-[70%] justify-self-center self-center border-[.5px] border-gray-400 rounded-md overflow-hidden">
+     <div className="ask-container flex w-full  flex-col  justify-self-end self-center  absolute bottom-[-5px] rounded-lg  ">
+        
+     
+     {showUpload && <div ref={divRef} className=" absolute bg-blacky w-[150px] h-[110px] bg-[#1E293B] rounded p-2 z-10 left-28 -top-24">
+    <div className="flex justify-between">
+    <p className="font-semibold mb-1 text-[#dbdada]">Add File</p>
+    <IoIosClose onClick={()=>{setShowUpload(false)}}  className="text-xl rounded-full focus:ring-[#dbdada] text-[#dbdada] hover:text-[#1E293B] hover:bg-[#dbdada]"/>
+    </div>
+     <input type="file" id="upload" onChange={handleFileUpload} className="block w-full text-sm text-slate-500
+     file:mr-40 file:py-2 file:p-2 file:w-full file:text-left file:hover:bg-slate-200 file:bg-transparent
+     file:rounded file:border-0
+     file:text-sm file:font-semibold file:text-[#94A3B8] file:hover:text-[#1E293B]
+    " />
+     <p className="text-[#94A3B8] hover:text-[#1E293B] font-semibold p-1 px-2 rounded hover:bg-slate-200 transition-all cursor-pointer text-sm">Import URL</p>
+     </div> }
+     
+     <form className="ask-container flex justify-between  w-[70%] justify-self-center self-center border-[.5px] border-gray-400 rounded-md relative">
+       
+     <button className="bg-white" onClick={(e)=>{e.preventDefault(); setShowUpload(!showUpload)}}>
+          <TiAttachmentOutline className="text-xl mx-2  rounded-full p-[.1rem] focus:ring-black focus:ring-[1px]" />
+          </button>
             <div className="w-full">
+            
               <input
               value={question} 
               onChange={handleQuestionChange}
@@ -172,7 +213,7 @@ const ConversationPage = ({ messages }) => {
                 }}
               />
             </div>
-           {!isLoading? (<button type="send" className="send-btn" onClick={handleChangeIcon}>
+           {!isLoading? (<button disabled={question.length == 0} type="send" className="send-btn" onClick={handleChangeIcon}>
               <div className=" h-full px-3 flex flex-col items-center justify-center hover:bg-slate-950" style={{backgroundColor:`${color}`}}>
                 <img src={send} />
               </div>
@@ -182,10 +223,9 @@ const ConversationPage = ({ messages }) => {
             </div>
           </button>)}
           </form>
-        </div>)
+        </div>
       </div>
     </div>
-  );
-};
+  )}
 
 export default ConversationPage;

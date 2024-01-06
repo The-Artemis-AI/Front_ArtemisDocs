@@ -9,7 +9,7 @@ function FAQ(props) {
 
   return (
     <div className="faq-container flex flex-col ">
-      <div className="faq-content-right flex text-white justify-center shadow-grey-500/20 bg-slate-900 shadow-2xl transition ease-in-out delay-150">
+      <div className="faq-content-right flex text-white justify-between shadow-grey-500/20 bg-slate-900 shadow-2xl transition ease-in-out delay-150">
         <p className="text-md text-semibold tex text-normal p-4 text-white">
           {props.head}
         </p>
